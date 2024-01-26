@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+<div>
+    <h1>Pizza-Bestellungen</h1>
+    <div>
+        {% for order in orders %}
+                {% include "components/custom-order.html" with order=order url=url%}
+        {% endfor %}
+    </div>
+</div>
+{% endblock content %}
+{% block javascript %}
+<script>
+        function getCookie(name) {
+        var cookieValue = null;
+        if (document.cookie && document.cookie !== '') {
+            var cookies = document.cookie.split(';');
+            for (var i = 0; i < cookies.length; i++) {
+                var cookie = jQuery.trim(cookies[i]);
+                if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                    cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                    break;
+                }
+            }
+        }
+        return cookieValue;
+    }
+
+    function deleteHandler(customer, date, time) {
+        var csrftoken = getCookie('csrftoken');
+        $.ajax({
+            url: '{{url}}/orders/',
+            type: 'DELETE',
+            beforeSend: function(xhr) {
+                xhr.setRequestHeader("X-CSRFToken", csrftoken);
+            },
+            data: JSON.stringify({
+                customer: customer,
+                date: date,
+                time: time
+            }),
+            success: function(response) {
+                location.reload();
+                console.log(response);
+            }
+        });
+    }
+    </script>
+{% endblock javascript %}

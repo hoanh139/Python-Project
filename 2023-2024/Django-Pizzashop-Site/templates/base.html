@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0,
+          maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    {% block css %}
+        <link rel="stylesheet" href="style.css">
+    {% endblock css %}
+    <title>{% block title %} Pizzeria {% endblock title %}</title>
+</head>
+<body class="bg-yellow">
+    <nav>
+      <ul>
+        <li><a href="{% url 'home' %}">Home</a></li>
+        <li><a href="{% url 'menu' %}">Speisekarte</a></li>
+        <li><a href="{% url 'user-info' %}">Eingabe Kundendaten</a></li>
+        <li><a href="{% url 'order' %}">Anzeige Bestellungen</a></li>
+      </ul>
+    </nav>
+    <main>
+        {% block header %}
+        <h1>Pizzeria dall'informatico</h1>
+
+        <div class="pizzaleiste">
+            <div class="card-body">
+                <img src="{% static 'images/pizzenleiste.png' %}" width = "800" height="100">
+            </div>
+        </div>
+        <br>
+        <h2>Willkommen bei der Pizzeria dall'informatico</h2>
+        {% endblock header %}
+
+        {% block content  %}
+        {% endblock content  %}
+
+    </main>
+
+    {% block javascript  %}
+    {% endblock javascript %}
+</body>
+</html>

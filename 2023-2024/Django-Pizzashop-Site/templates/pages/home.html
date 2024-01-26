@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %} Meine Pizzeria {% endblock title %}
+
+{% block content  %}
+    Hier finden nicht nur Informatiker leckere Pizzen.
+
+    <h4>Bestellen Sie unsere traditionelle Pizzen
+    <br>
+    aus dem Holzbackofen!
+    <br>
+    Sie werden nicht enttäuscht sein.</h4>
+    <br>
+
+Hier geht es zu unserer <a href="{% url 'menu' %}">Speisekarte</a>.
+{% endblock content  %}
+

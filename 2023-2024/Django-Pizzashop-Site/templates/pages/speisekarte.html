@@ -1,0 +1,26 @@
+{% extends "base-page.html" %}
+{% load static %}
+{% block content %}
+<div>
+    <h1>Speisekarte</h1>
+    <h4>Bitte wählen Sie aus unserem vielfältigem Angebot von Pizzen</h4>
+    <form method="post">
+        {% csrf_token %}
+        <input type="submit" value="Bestellung abschicken">
+        <fieldset>
+            <legend>Lieferung</legend>
+            {% include "components/custom-input.html" with name="time" label="Wunschzeit" type="time"%}
+            {% include "components/custom-input.html" with name="email" label="Kunden Email" placeholder="Registration erforderlich"%}
+        </fieldset>
+        <div>
+            {% for pizza in pizzas %}
+                {% include "components/custom-pizza.html" with id=pizza.name name=pizza.name price=pizza.price%}
+            {% endfor %}
+        </div>
+
+    </form>
+</div>
+{% endblock content %}
+
+{% block javascript %}
+{% endblock javascript %}

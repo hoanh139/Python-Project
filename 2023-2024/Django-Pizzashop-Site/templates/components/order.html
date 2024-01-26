@@ -1,0 +1,13 @@
+<div>
+    <p>Pizzas: {{order.pizzas}}</p>
+    <p>Kunde: {{order.customer}}</p>
+    <p>Preis: {{order.total_price}} €</p>
+    <p>Datum: {{order.get_parsed_date}}, {{order.time}}</p>
+    <div>
+        <button onclick="deleteHandler('{{order.customer}}', '{{order.date}}','{{order.time}}')" >Löschen</button>
+    </div>
+</div>
+
+
+{% block javascript %}
+{% endblock javascript %}

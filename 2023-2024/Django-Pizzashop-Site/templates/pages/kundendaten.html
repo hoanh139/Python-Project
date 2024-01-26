@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+<div>
+    <h1>Kundendaten</h1>
+    <form method="post">
+        {% csrf_token %}
+        <input type="submit" value="Kundendaten speichern">
+        <fieldset>
+            <legend>Kundendaten</legend>
+            <div>
+                <div>
+                    <h4>Kundeninformationen</h4>
+                    {% include "components/input.html" with name="firstname" label="Vorname" placeholder="Eva" value=data.name %}
+                    {% include "components/input.html" with name="lastname" label="Nachname" placeholder="Musterfrau" %}
+                    {% include "components/input.html" with name="username" label="Username" placeholder="Evrau" %}
+                    {% include "components/input.html" with name="email" label="Email" placeholder="eva.musterfrau@gmx.de" type="email" %}
+                    {% include "components/input.html" with name="password" label="Kernwort" type="password" %}
+                </div>
+                <div>
+                    <h4>Lieferadresse</h4>
+                    {% include "components/input.html" with name="postcode" label="PLZ" type="number" %}
+                    {% include "components/input.html" with name="city" label="Ort" %}
+                    {% include "components/input.html" with name="address" label="Straße, Hausnummer" %}
+                </div>
+            </div>
+        </fieldset>
+    </form>
+</div>
+{% endblock content %}
+
+{% block javascript %}
+{% endblock javascript %}
